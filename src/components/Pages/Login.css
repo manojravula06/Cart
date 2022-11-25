@@ -1,0 +1,14 @@
+.msg{
+    text-align: center;
+    cursor: pointer;
+}
+
+.heading{
+    font-family: monospace;
+   margin-top: 10px;
+}
+.label{
+    display: flex;
+    margin: 5px;
+    justify-content:space-evenly
+}
