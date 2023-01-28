@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import "./Login.css";
-import {Signup} from "../api/Auth";
+import {Signup} from "../../api/Auth";
 
 
 const Login = () => {

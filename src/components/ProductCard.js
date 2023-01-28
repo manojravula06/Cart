@@ -1,6 +1,6 @@
 import React from "react";
 
-function Widgit({ title, price, category, img,description}) {
+function ProductCard({ title, price, category, img,description}) {
   return (
     <div>
       <div className="container-fluid">
@@ -18,4 +18,4 @@ function Widgit({ title, price, category, img,description}) {
   );
 }
 
-export default Widgit;
+export default ProductCard;

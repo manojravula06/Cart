@@ -1,4 +1,4 @@
-import { AxiosInstance } from "./AxiosInstance";
+import { AxiosInstance } from "../util/AxiosInstance/AxiosInstance";
 
 export const Signup = async (user) => {
   const URL = "/auth/signup";
