@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-import Home from "../home/index";
+import Home from "../LandingPage/index";
 import Cart from "../cart/Cart";
 import Men from "../men/Men";
 import WomenClothing from "../women/WomenClothing";
 import Electronics from "../electronics/Electronics";
-import Jewellery from "../jewellery/Jewellery";
+import Jewellery from "../jewellery/index";
 import Login from "../login/Login";
 
 

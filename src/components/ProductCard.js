@@ -10,6 +10,7 @@ function ProductCard({ title, price, category, img,description}) {
             <p className="fw-bold"> {title}</p>
             <p className="card-text fw-bold display-6 text-danger">Price {price}</p>
             <p className="card-text">Category : {category}</p>
+            <p className="card-text">{description}</p>
             <button className="btn btn-dark rounded-4">Details</button>
           </div>
         </div>

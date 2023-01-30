@@ -1,5 +1,4 @@
 import {useState,useEffect} from 'react';
-import {fetchProducts} from '../../api/fetchProducts';
 import ProductCard from '../../components/ProductCard';
 import NavbarComponent from "../../components/Navbar";
 
