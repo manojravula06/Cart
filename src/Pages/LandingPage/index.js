@@ -21,7 +21,7 @@ function Home() {
       isLoading && (
         <>
           <div class="spinner-grow text-primary" role="status">
-            <span class="">Loading...</span>
+            <span class="visually-hidden">Loading...</span>
           </div>
         </>
       )

@@ -10,3 +10,14 @@ export const getAllProducts=async()=>{
         throw error
     }
 }
+
+export const getjewelery=async()=>{
+    const URL='products/category/jewelery'
+    try {
+        const response=await AxiosInstance.get(URL)
+        return response
+    } catch (error) {
+
+        throw error
+    }
+}
