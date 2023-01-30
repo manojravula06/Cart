@@ -15,7 +15,7 @@ export const getjewelery=async()=>{
     const URL='products/category/jewelery'
     try {
         const response=await AxiosInstance.get(URL)
-        return response
+        return response.data
     } catch (error) {
 
         throw error
