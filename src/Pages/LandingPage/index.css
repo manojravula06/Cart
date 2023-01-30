@@ -3,3 +3,13 @@
     font-family: Arial, Helvetica, sans-serif;
     color: black;
 }
+
+.heading{
+    font-size:35px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-rated{
+    display: flex;
+    flex-wrap: wrap;
+}

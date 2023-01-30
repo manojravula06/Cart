@@ -4,7 +4,8 @@ export const getAllProducts=async()=>{
     const URL='/products'
     try {
         const response=await AxiosInstance.get(URL)
-        return response;
+        console.log(response.data);
+        return response.data;
     } catch (error) {
         throw error
     }

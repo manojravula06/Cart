@@ -6,19 +6,22 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
 import { getAllCategories } from "../../api/categories/index";
+import ProductCard from "../../components/ProductCard";
 import NavbarComponent from "../../components/Navbar";
-import './index.css';
+import "./index.css";
+import { getAllProducts } from "../../api/products/Products";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState("");
+  const [data, setData] = useState([]);
 
   const loading = () => {
     return (
       isLoading && (
         <>
           <div class="spinner-grow text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+            <span class="">Loading...</span>
           </div>
         </>
       )
@@ -26,7 +29,8 @@ function Home() {
   };
   const initialise = async () => {
     const category = await getAllCategories();
-    console.log(category);
+    const product = await getAllProducts();
+    setData(product);
     setCategories(category);
     setIsLoading(false);
   };
@@ -77,18 +81,22 @@ function Home() {
                       variant="top"
                       src="https://img.indiafilings.com/learn/wp-content/uploads/2017/07/12004011/mech-elect-appliances.jpg"
                     />
-                    <div className="card-text text-uppercase">{categories[0]}</div>
+                    <div className="card-text text-uppercase">
+                      {categories[0]}
+                    </div>
                   </Card>
                 </Link>
               </Col>
               <Col>
-                <Link to='/jewellery' className="link">
+                <Link to="/jewellery" className="link">
                   <Card className="m-2" style={{ width: "18rem" }}>
                     <Card.Img
                       variant="top"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6GfjCKO_Ie1BUTi8Fp4Z_g6WHdspeNLBQW10zV6dfqd-GdQxOse0r8bK499OkT5NpYDY&usqp=CAU"
                     />
-                    <div className="card-text text-uppercase">{categories[1]}</div>
+                    <div className="card-text text-uppercase">
+                      {categories[1]}
+                    </div>
                   </Card>
                 </Link>
               </Col>
@@ -99,7 +107,9 @@ function Home() {
                       variant="top"
                       src="https://i0.wp.com/www.society19.com/wp-content/uploads/2019/12/20191206_120849.jpg?fit=1243%2C932&ssl=1"
                     />
-                    <div className="card-text text-uppercase">{categories[2]}</div>
+                    <div className="card-text text-uppercase">
+                      {categories[2]}
+                    </div>
                   </Card>
                 </Link>
               </Col>
@@ -117,6 +127,25 @@ function Home() {
                 </Link>
               </Col>
             </Row>
+            <hr />
+            <div className="text-lg-start text-sm-center">
+              <span className="heading">Top Rated</span>
+            </div>
+            <div className="">
+            <div className="top-rated p-2 m-3">
+              {data.map((product) => {
+              return (
+                <>
+                  <ProductCard
+                    img={product.image}
+                    price={product.price}
+                    category={product.category}
+                   className=""/>
+                </>
+              );
+            })}
+              </div>
+            </div>
           </>
         )}
       </Container>
