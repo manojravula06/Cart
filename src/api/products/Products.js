@@ -4,7 +4,7 @@ export const getAllProducts=async()=>{
     const URL='/products'
     try {
         const response=await AxiosInstance.get(URL);
-        return response;
+        return response.data;
     } catch (error) {
         throw error
     }
@@ -33,7 +33,7 @@ export const getElectronics=async()=>{
 }
 
 export const getMensCloting=async()=>{
-    const URL=`products/category/mensclothing`
+    const URL=`products/category/men's clothing`
     try {
         const response=await AxiosInstance.get(URL)
         return response;
@@ -44,7 +44,7 @@ export const getMensCloting=async()=>{
 }
 
 export const getWomensCloting=async()=>{
-    const URL='products/category/jewelery'
+    const URL=`products/category/women's clothing`
     try {
         const response=await AxiosInstance.get(URL)
         return response.data;

@@ -2,18 +2,18 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/ProductCard";
 import NavbarComponent from "../../components/Navbar";
-import { getAllProducts } from "../../api/products/Products";
+import {getMensCloting } from "../../api/products/Products";
 import Loading from "../../components/Loading";
 import "./men.css";
 
-function Men() {
+function MenClothing() {
   const [men, setMen] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const initalize = async () => {
-    const Product = await getAllProducts();
+    const Product = await getMensCloting();
+    console.log(Product)
     setMen(Product.data);
-    console.log(Product.data);
     setIsLoading(false);
   };
   useEffect(() => {
@@ -26,13 +26,15 @@ function Men() {
       {isLoading && Loading()}
       <div className="container-fluid">
         <div className="men-category">
-          {men.map((product) => {
+          {!isLoading && men.map((product) => {
             return (
+              <Link to="/details" className="link">
               <ProductCard
                 img={product.image}
                 category={product.category}
                 price={product.price}
               />
+              </Link>
             );
           })}
         </div>
@@ -41,4 +43,4 @@ function Men() {
   );
 }
 
-export default Men;
+export default MenClothing;
