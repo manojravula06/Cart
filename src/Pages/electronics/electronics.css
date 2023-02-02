@@ -1,0 +1,4 @@
+.electronics-category{
+    display: flex;
+    flex-wrap: wrap;
+}

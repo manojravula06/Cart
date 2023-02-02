@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "../../components/ProductCard";
 import NavbarComponent from "../../components/Navbar";
 import { getjewelery } from "../../api/products/Products";
@@ -8,7 +9,7 @@ const Jewellery = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [jewellery, setJewellery] = useState([]);
 
-  const loading = () => {
+const loading = () => {
     return (
       isLoading && (
         <>
@@ -23,7 +24,6 @@ const Jewellery = () => {
     setIsLoading(true);
     const product = await getjewelery();
     setJewellery(product);
-    console.log(product);
     setIsLoading(false);
   };
   useEffect(() => {
@@ -41,11 +41,14 @@ const Jewellery = () => {
               jewellery.map((product) => {
                 return (
                   <>
-                    <ProductCard
+                   <Link to="/details" className="link">
+                   <ProductCard
                       img={product.image}
                       price={product.price}
                       category={product.category}
                     />
+                   </Link>
+                    
                   </>
                 );
               })}

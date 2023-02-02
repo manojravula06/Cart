@@ -1,23 +1,56 @@
-import {useState,useEffect} from 'react';
-import ProductCard from '../../components/ProductCard';
-import NavbarComponent from "../../components/Navbar";
+import { useState, useEffect } from "react";
+import Navbar from "../../components/Navbar";
+import { Link } from "react-router-dom";
+import { getElectronics } from "../../api/products/Products";
+import ProductCard from "../../components/ProductCard";
+import "./electronics.css";
 
 const Electronics = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [electronics, setElectronics] = useState([]);
 
-useEffect(()=>{
-Electornics();
-},[])
-const Electornics=()=>{
+  const loader = () => {
+    return (
+      isLoading && (
+        <>
+          <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </>
+      )
+    );
+  };
+  const initialize = async () => {
+    setIsLoading(true);
+    const product = await getElectronics();
+    setElectronics(product);
+    setIsLoading(false);
+  };
 
-    }
-
+  useEffect(() => {
+    initialize();
+  }, []);
   return (
     <div>
-      <NavbarComponent/>
-        <h1 className="display-1">Electronics</h1>
-        <ProductCard/>
+      <Navbar />
+      <h1 className="display-1"> Electronics</h1>
+      {loader()}
+      <div className="container-fluid">
+        <div className="electronics-category">
+          {!isLoading &&
+            electronics.map((product) => {
+              return (
+                <>
+                  <Link to="/details" className="link">
+                    <ProductCard img={product.image} />
+                  </Link>
+                </>
+              );
+            })}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Electronics
+export default Electronics;
