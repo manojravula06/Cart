@@ -1,0 +1,4 @@
+.men-category{
+    display: flex;
+    flex-wrap: wrap;
+}

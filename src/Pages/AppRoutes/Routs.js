@@ -10,7 +10,7 @@ import Details from "../details/index";
 import Login from "../login/Login";
 
 
-function Routs() {
+function RoutesPage() {
   return (
       <Router>
         <Routes>
@@ -22,10 +22,9 @@ function Routs() {
           <Route path={"/electronics"} element={<Electronics/>}/>
           <Route path={"/jewellery"} element={<Jewellery/>}/>
           <Route path={"/details"} element={<Details/>}/>
-
         </Routes>
       </Router>
   );
 }
 
-export default Routs;
+export default RoutesPage;
