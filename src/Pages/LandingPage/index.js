@@ -136,11 +136,14 @@ function Home() {
               {data.map((product) => {
               return (
                 <>
+                <Link to={`/details/${product.id}`} className="link">
                   <ProductCard
                     img={product.image}
                     price={product.price}
+                    title={product.title}
                     category={product.category}
                    className=""/>
+                </Link>
                 </>
               );
             })}

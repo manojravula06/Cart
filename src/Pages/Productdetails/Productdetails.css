@@ -1,0 +1,10 @@
+.single_product{
+    width:auto;
+    height:30rem;
+}
+
+.price{
+    color:rgb(107, 29, 29);
+    font-weight: bolder;
+    font-size: larger;
+}
