@@ -53,3 +53,15 @@ export const getWomensCloting=async()=>{
         return error;
     }
 }
+
+
+export const getSingleProduct=async(id)=>{
+    const URL=`https://fakestoreapi.com/products/${id}`
+    try {
+        const response=await AxiosInstance.get(URL)
+        console.log(response)
+        return response;
+    } catch (error) {
+        throw error
+    }
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getWomensCloting } from "../../api/products/Products";
 import NavbarItem from "../../components/Navbar";
 import Loading from "../../components/Loading";
@@ -14,7 +15,6 @@ const WomenClothing = () => {
     const product = await getWomensCloting();
     setWomenClothing(product);
     setIsLoading(false);
-    console.log(product.data)
     product.data === 0 && setMessage("Out or Stock");
   };
   useEffect(() => {
@@ -31,11 +31,14 @@ const WomenClothing = () => {
           {womenclothing.map((product) => {
             return (
               <>
+                <Link to={`/details/${product.id}`} className="link">
                 <ProductCard
                   img={product.image}
+                  title={product.title}
                   price={product.price}
                   category={product.category}
                 />
+                </Link>
               </>
             );
           })}

@@ -28,8 +28,9 @@ function MenClothing() {
         <div className="men-category">
           {!isLoading && men.map((product) => {
             return (
-              <Link to="/details" className="link">
+              <Link to={`/details/${product.id}`} className="link">
               <ProductCard
+                title={product.title}
                 img={product.image}
                 category={product.category}
                 price={product.price}

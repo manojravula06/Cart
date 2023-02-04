@@ -41,14 +41,14 @@ const loading = () => {
               jewellery.map((product) => {
                 return (
                   <>
-                   <Link to="/details" className="link">
+                   <Link to={`/details/${product.id}`} className="link">
                    <ProductCard
                       img={product.image}
+                      title={product.title}
                       price={product.price}
                       category={product.category}
                     />
                    </Link>
-                    
                   </>
                 );
               })}

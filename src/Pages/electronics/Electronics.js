@@ -41,8 +41,13 @@ const Electronics = () => {
             electronics.map((product) => {
               return (
                 <>
-                  <Link to="/details" className="link">
-                    <ProductCard img={product.image} price={product.price} category={product.category} />
+                  <Link to={`/details/${product.id}`} className="link">
+                    <ProductCard
+                      img={product.image}
+                      title={product.title}
+                      price={product.price}
+                      category={product.category}
+                    />
                   </Link>
                 </>
               );
