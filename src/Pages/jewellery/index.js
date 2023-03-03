@@ -8,7 +8,7 @@ import "./jewellery.css"
 const Jewellery = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [jewellery, setJewellery] = useState([]);
-
+  const [cart,setCart]=useState([])
 const loading = () => {
     return (
       isLoading && (
@@ -26,6 +26,8 @@ const loading = () => {
     setJewellery(product);
     setIsLoading(false);
   };
+
+
   useEffect(() => {
     initialize();
   }, []);
@@ -41,14 +43,15 @@ const loading = () => {
               jewellery.map((product) => {
                 return (
                   <>
-                   <Link to={`/details/${product.id}`} className="link">
-                   <ProductCard
+                  <Link to={`/details/${product.id}`} className="link">
+                  <ProductCard
                       img={product.image}
                       title={product.title}
                       price={product.price}
                       category={product.category}
                     />
-                   </Link>
+                  </Link>
+                  
                   </>
                 );
               })}

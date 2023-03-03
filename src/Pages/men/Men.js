@@ -12,7 +12,6 @@ function MenClothing() {
 
   const initalize = async () => {
     const Product = await getMensCloting();
-    console.log(Product)
     setMen(Product.data);
     setIsLoading(false);
   };

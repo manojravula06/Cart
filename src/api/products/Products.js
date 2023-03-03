@@ -64,3 +64,4 @@ export const getSingleProduct=async(id)=>{
         throw error
     }
 }
+

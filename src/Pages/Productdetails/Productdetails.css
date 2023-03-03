@@ -4,7 +4,8 @@
 }
 
 .price{
-    color:rgb(107, 29, 29);
+    color:#121239;
     font-weight: bolder;
     font-size: larger;
+    text-align: center;
 }

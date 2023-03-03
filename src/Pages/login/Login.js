@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,30 +7,61 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import "./Login.css";
-import {Signup} from "../../api/Auth";
+import {Signup,Signin} from "../../api/Auth";
 
 
-const Login = () => {
+const Login = ({token,setToken}) => {
   const [showSignup, setShowSignup] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message,setMessage]=useState('')
 
   // toggle signup to signin
   const toggle = () => {
     setShowSignup(!showSignup);
   };
+  const clearState=()=>{
+      setUsername('');
+      setEmail('')
+      setPassword('')
+  }
+  const updateSignupData=(e)=>{
+      const id=e.target.id;
 
-  const signupHandler = async() => {
-    const user = {username, password, email}; 
-    try {
-        const response = await Signup(user); 
-        console.log(response.data.message);
-     
-    }catch (error) {
-        console.log(error);
-    }
+      if(id==='username'){
+        setUsername(e.target.value);
+      }else if(id==='email'){
+        setEmail(e.target.value);
+      }else if(id==='password'){
+        setPassword(e.target.value)
+      }
+      setMessage('')
+  }
+  //sign up functionality
+  const signupHandler = async(e) => {
+    e.preventDefault();
+    const data={
+      name:username,
+      email:email,
+      password:password
+    };
+    const response=await Signup(data)
+    console.log(response)
+    clearState()
+ 
 }
+  //sign in functionality
+  const signinHandler=async(e)=>{
+    e.preventDefault()
+    const user={username,password}
+    try {
+      const response=await Signin(user)
+      console.log(response)      
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const renderComponent = () => {
     return (
@@ -38,7 +70,7 @@ const Login = () => {
           <h4 className="heading display-5">
             {showSignup ? "SIGN UP" : "LOG IN"}
           </h4>
-
+          <p className="text-danger">{message}</p>
           <Container className="bg-light">
             <Form.Group>
               <Stack gap={2} className="col-md-5 mx-auto">
@@ -52,8 +84,9 @@ const Login = () => {
                       type="text"
                       placeholder="Enter User Name"
                       className="text-center"
+                      id="username"
                       value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                      onChange={updateSignupData}
                     />
                   </Col>
                 </Row>
@@ -70,8 +103,9 @@ const Login = () => {
                           type="email"
                           placeholder="Enter Email ID"
                           className="text-center"
+                          id="email"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          onChange={updateSignupData}
                         />
                       </Col>
                     </Row>
@@ -88,15 +122,15 @@ const Login = () => {
                     <Form.Control
                       type="password"
                       className="text-center"
-                      placeholder={
-                        showSignup ? "Set Password" : "Enter Passowrd"
-                      }
+                      placeholder="Enter Password"
+                      id="password"
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={updateSignupData}
                     />
-                    <Button type="submit" className="rounded-4 m-2" onClick={signupHandler}>
-                      {showSignup ? "SIGN UP" : "LOG IN"}
-                    </Button>
+                      {showSignup ? <input type="submit" name="signup" value="Sign up" className="btn btn-primary m-2"
+                      onClick={signupHandler}/> : 
+                      <input type="submit" name="signin" value="Sign in" className="btn btn-primary m-2" onClick={signinHandler}/>
+                      }
                   </Col>
                 </Row>
                 <p className="msg" onClick={toggle}>

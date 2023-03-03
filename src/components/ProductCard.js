@@ -1,6 +1,7 @@
 import React from "react";
 
 function ProductCard({ title, price, category, img,description}) {
+  
   return (
     <div>
       <div className="container-fluid">

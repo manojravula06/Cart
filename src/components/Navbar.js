@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -8,7 +7,7 @@ function NavbarComponent() {
     <Navbar collapse expand="lg" bg="dark" sticky="top" variant="dark">
       <Container>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Brand href="/">amazon</Navbar.Brand>
+        <Navbar.Brand href="/">E-Cart</Navbar.Brand>
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
@@ -21,7 +20,10 @@ function NavbarComponent() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
             <Nav.Link href="/login">Log in</Nav.Link>
-            <Nav.Link>Cart</Nav.Link>
+            <Nav.Link href="/cart">
+                cart
+            </Nav.Link>
+            <span>helot</span>
           </Nav>
         </Navbar.Collapse>
       </Container>
